@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMount } from 'vue';
+import { ref } from 'vue';
 
 const text = ref('')
 
