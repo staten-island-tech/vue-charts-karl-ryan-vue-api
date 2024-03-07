@@ -72,12 +72,20 @@ export default {
 </script> -->
 
 <template>
-  <div>
-
-  </div>
+   <div class="flexbox">
+    <cardSet
+       v-for="libraries in data"
+      :key="data.branch" 
+      :Library="libraries"
+    />   </div> 
+    
+    <!-- v-for="libraries in data"
+      :key="data.branch" -->
+  
 </template>
 
 <script>
+import CoolData from "./components/CoolData.vue"
 export default {
   data() {
     return {
@@ -95,7 +103,8 @@ export default {
           );
           const data = await result.json();
           this.libraries = data.results;
-          console.log(data)
+          console.log(data);
+          
 
         } catch (error) {
           console.log(error);

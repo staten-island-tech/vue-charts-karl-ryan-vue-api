@@ -1,11 +1,14 @@
 <template>
-    <div>
-        <h1>Home Page</h1>
-
-    </div>
+<div class="cardSet">
+    <h2>{{ Library.branch }}</h2>
+  </div>
 </template>
 
 <script setup>
+
+const props = {
+    library: Object,
+}
     
 </script>
 
