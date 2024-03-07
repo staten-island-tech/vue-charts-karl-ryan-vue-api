@@ -1,13 +1,13 @@
-<template>
-    <Bar id="my-chart-id" :options="chartOptions" :data="chartData" />
-
+ <template>
+<!--     <Bar id="my-chart-id" :options="chartOptions" :data="chartData" /> -->
+    <h1>poop</h1>
 </template>
   
 <script>
-import { Bar } from 'vue-chartjs'
+/* import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale) */
 
 /* export default {
     name: 'BarChart',
@@ -27,4 +27,4 @@ ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 </script>
 
 
-<style scoped></style>
+<style scoped></style> 

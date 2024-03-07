@@ -77,7 +77,7 @@ export default {
   </div>
 </template>
 
-<script setup>
+<script>
 export default {
   data() {
     return {
@@ -90,15 +90,20 @@ export default {
     methods: {
       fetchData: async function () {
         try {
-          const restut = await fetch(
+          const result = await fetch(
             `https://data.cityofnewyork.us/resource/ne9z-skhf.json`
           );
           const data = await result.json();
           this.libraries = data.results;
-        
+          console.log(data)
+
         } catch (error) {
           console.log(error);
         }
+      }
+    }
+  }
+
 </script>
 
 <style scoped>
