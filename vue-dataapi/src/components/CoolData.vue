@@ -1,13 +1,13 @@
 <template>
 <div class="cardSet">
-    <h2>{{ pokemon.name }}</h2>
+    <h2>{{ Library.brances }}</h2>
   </div>
 </template>
 
 <script setup>
 
 const props = defineProps( {
-    pokemon: Object,
+    Library: Object,
 
 })
     
