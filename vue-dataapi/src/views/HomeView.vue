@@ -72,20 +72,31 @@ export default {
 </script> -->
 
 <template>
-   <div class="flexbox">
-    <cardSet
-       v-for="libraries in data"
-      :key="data.branch" 
-      :Library="libraries"
-    />   </div> 
-    
-    <!-- v-for="libraries in data"
-      :key="data.branch" -->
-  
+<div class="flexbox">
+    <librarySet  
+       v-for="branches in libraries"
+      :key="branches.branch" 
+      :Library="branches"
+    />   
+  </div>
+
 </template>
 
-<script>
-import CoolData from "./components/CoolData.vue"
+<script setup>
+
+import {ref, onMounted } from 'vue'
+const libraries = ref('')
+async function getLibrary() {
+  let res = await fetch('https://data.cityofnewyork.us/resource/ne9z-skhf.json' )
+}
+let data = res.json()
+libraries.value = data.branches
+
+onMounted(()=> {
+  getLibrary();
+})
+ 
+/* import CoolData from '@/components/CoolData.vue';
 export default {
   data() {
     return {
@@ -111,7 +122,7 @@ export default {
         }
       }
     }
-  }
+  } */
 
 </script>
 
