@@ -84,20 +84,23 @@ export default {
 <script setup>
 
 import {ref, onMounted } from 'vue'
-const libraries = ref('')
+const library = ref('')
 async function getLibrary() {
   let res = await fetch('https://data.cityofnewyork.us/resource/ne9z-skhf.json' )
   let data = res.json()
-  console.log(data)
-  console.log(data.branch);
-  // libraries.value = data.branch
+  library.value = data
+  console.log(library)
+  return library
+  // console.log(data.network);
   // return libraries.value
   // return data;
   
 }
 
 // console.log(data);
-// console.log(libraries.value)
+console.log(library)
+
+
 onMounted(()=> {
   getLibrary();
   // console.log(data);
