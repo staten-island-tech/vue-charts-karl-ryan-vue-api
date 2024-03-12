@@ -75,10 +75,9 @@ export default {
 <!-- <div class="flexbox">
     <librarySet  
        v-for="library in data"
-      :key="library.value" 
+      :key="library.branch" 
     />   
   </div> -->
-
 </template>
 
 <script setup>
@@ -89,15 +88,9 @@ async function getLibrary() {
   let res = await fetch('https://data.cityofnewyork.us/resource/ne9z-skhf.json' )
   let data = res.json()
   library.value = data
-  console.log(library)
-  return library
-  // console.log(data.network);
-  // return libraries.value
-  // return data;
-  
+  return library 
 }
 
-// console.log(data);
 console.log(library)
 
 
