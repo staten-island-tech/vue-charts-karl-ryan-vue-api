@@ -75,7 +75,7 @@ export default {
 <div class="flexbox">
     <librarySet  
        v-for="library in data"
-      :key="library.branch" 
+      :key="library.value" 
     />   
   </div>
 
@@ -90,7 +90,7 @@ async function getLibrary() {
   let data = res.json()
   return data;
 }
-libraries.value = data.branches
+libraries.value = data.branch
 
 onMounted(()=> {
   getLibrary();
