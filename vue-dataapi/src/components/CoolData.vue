@@ -9,7 +9,7 @@ const props = defineProps( {
 
 <template>
 <div class="cardSet">
-    <h2>{{ Library.branch }}</h2>
+    <!-- <h2>{{ Library.branch }}</h2> -->
   </div>
 </template>
 

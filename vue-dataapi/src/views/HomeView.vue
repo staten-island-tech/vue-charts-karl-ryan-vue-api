@@ -72,12 +72,12 @@ export default {
 </script> -->
 
 <template>
-<div class="flexbox">
+<!-- <div class="flexbox">
     <librarySet  
        v-for="library in data"
       :key="library.value" 
     />   
-  </div>
+  </div> -->
 
 </template>
 
