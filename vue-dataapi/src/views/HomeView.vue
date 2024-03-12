@@ -74,9 +74,8 @@ export default {
 <template>
 <div class="flexbox">
     <librarySet  
-       v-for="branches in libraries"
-      :key="branches.branch" 
-      :Library="branches"
+       v-for="library in data"
+      :key="library.branch" 
     />   
   </div>
 
@@ -88,12 +87,14 @@ import {ref, onMounted } from 'vue'
 const libraries = ref('')
 async function getLibrary() {
   let res = await fetch('https://data.cityofnewyork.us/resource/ne9z-skhf.json' )
+  let data = res.json()
+  return data;
 }
-let data = res.json()
 libraries.value = data.branches
 
 onMounted(()=> {
   getLibrary();
+  console.log(data);
 })
  
 /* import CoolData from '@/components/CoolData.vue';

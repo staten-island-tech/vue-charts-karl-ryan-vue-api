@@ -1,9 +1,3 @@
-<template>
-<div class="cardSet">
-    <h2>{{ Library.brances }}</h2>
-  </div>
-</template>
-
 <script setup>
 
 const props = defineProps( {
@@ -12,6 +6,12 @@ const props = defineProps( {
 })
     
 </script>
+
+<template>
+<div class="cardSet">
+    <h2>{{ Library.branches }}</h2>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 
