@@ -88,13 +88,19 @@ const libraries = ref('')
 async function getLibrary() {
   let res = await fetch('https://data.cityofnewyork.us/resource/ne9z-skhf.json' )
   let data = res.json()
-  return data;
+  console.log(data)
+  console.log(data.branch);
+  // libraries.value = data.branch
+  // return libraries.value
+  // return data;
+  
 }
-libraries.value = data.branch
 
+// console.log(data);
+// console.log(libraries.value)
 onMounted(()=> {
   getLibrary();
-  console.log(data);
+  // console.log(data);
 })
  
 /* import CoolData from '@/components/CoolData.vue';
