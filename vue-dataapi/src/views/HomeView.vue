@@ -89,15 +89,12 @@ async function getLibrary() {
   let data = res.json()
   library.value = data
   
-  return {
-    library: library,
-  }
+  return library
 }
-
-onMounted(()=> {
-  getLibrary();
-  console.log(library);
-  console.info(library._value);
+  
+onMounted(async()=> {
+  const library = await getLibrary();
+  console.log(library._rawValue);
 })
 
 /* import CoolData from '@/components/CoolData.vue';
