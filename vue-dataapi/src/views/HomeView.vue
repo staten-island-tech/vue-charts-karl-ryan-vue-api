@@ -72,17 +72,18 @@ export default {
 </script> -->
 
 <template>
-<!-- <div class="flexbox">
+ <div class="flexbox">
     <librarySet  
-       v-for="library in data"
-      :key="library.branch" 
+       v-for="library in libraries"
+      :key="library.branch"
     />   
-  </div> -->
+  </div>
 </template>
 
 <script setup>
 
 import {ref, onMounted } from 'vue'
+import CoolData from "../components/CoolData.vue"
 const library = ref('')
 async function getLibrary() {
   let res = await fetch('https://data.cityofnewyork.us/resource/ne9z-skhf.json' )
@@ -96,6 +97,8 @@ onMounted(async()=> {
   const libraries = await getLibrary();
   libraries.forEach((library) => console.log(library.branch))
 })
+
+
 
 /* import CoolData from '@/components/CoolData.vue';
 export default {

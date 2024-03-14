@@ -1,15 +1,16 @@
 <script setup>
 
 const props = defineProps( {
-    Library: Object,
-
+    libraries: Object,
 })
+
+console
     
 </script>
 
 <template>
 <div class="cardSet">
-    <!-- <h2>{{ Library.branch }}</h2> -->
+   <h2>{{ libraries.branch }}</h2>
   </div>
 </template>
 
