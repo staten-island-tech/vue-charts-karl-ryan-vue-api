@@ -88,13 +88,13 @@ async function getLibrary() {
   let res = await fetch('https://data.cityofnewyork.us/resource/ne9z-skhf.json' )
   let data = res.json()
   library.value = data
-  
-  return library
+  let coolData = library._rawValue
+  return coolData
 }
   
 onMounted(async()=> {
-  const library = await getLibrary();
-  console.log(library._rawValue);
+  const libraries = await getLibrary();
+  libraries.forEach((library) => console.log(library.branch))
 })
 
 /* import CoolData from '@/components/CoolData.vue';
