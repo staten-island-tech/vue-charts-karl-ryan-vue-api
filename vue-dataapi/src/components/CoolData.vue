@@ -10,7 +10,7 @@ console
 
 <template>
 <div class="cardSet">
-   <h2>{{ libraries.branch }}</h2>
+   <!-- <h2>{{ libraries.branch }}</h2> -->
   </div>
 </template>
 
