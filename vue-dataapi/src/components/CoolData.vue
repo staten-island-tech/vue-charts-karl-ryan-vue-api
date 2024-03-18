@@ -1,11 +1,10 @@
 <script setup>
 
 const props = defineProps( {
-    libraries: Object,
+    library: Object,
 })
 
-console
-    
+
 </script>
 
 <template>
