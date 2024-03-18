@@ -1,29 +1,4 @@
-<!-- <script setup>
-import { ref } from 'vue';
 
-const text = ref('')
-
-function onInput(e) {
-  text.value = e.target.value
-}
-</script>
-
-<template>
-  <input :value="text" @input="onInput" placeholder="Type here">
-  <p>{{ text }}</p>
-</template> -->
-
-<!-- <template>
-  <div>
-
-  </div>
-</template>
-
-</script> -->
-
-<!-- <style scoped>
-
-</style> -->
 <!-- <template>
   <div class="container">
     <Bar v-if="loaded" :data="chartData" />
@@ -59,30 +34,39 @@ export default {
 </script> -->
 
 <template>
- <!-- <div class="flexbox">
-    <librarySet  
-       v-for="library in libraries"
+  <h1>Library Locations</h1>
+  <div class="flexbox">
+    <CoolData
+      v-for="library in libraries"
       :key="library.branch"
-    />   
-  </div> -->
+      :library="library"
+      :branch="library.branch"
+      :boro="library.boro_central_library"
+    />
+  </div>
 </template>
 
 <script setup>
-
-import {ref, onBeforeMount } from 'vue'
+import { ref, onBeforeMount } from 'vue'
 import CoolData from "../components/CoolData.vue"
-const library = ref('')
-async function getLibrary() {
-  let res = await fetch('https://data.cityofnewyork.us/resource/ne9z-skhf.json' )
-  let data = res.json()
-  library.value = data
-  let coolData = library._rawValue
-  return coolData
+
+const libraries = ref([])
+
+
+async function getLibraries() {
+  try {
+    const response = await fetch('https://data.cityofnewyork.us/resource/ne9z-skhf.json')
+    if (response.status !=200) {
+      throw new Error('Failed to fetch')
+    }
+    libraries.value = await response.json()
+  } catch (error) {
+    console.error('Error fetching', error)
+  }
 }
-  
-onBeforeMount(async()=> {
-  const libraries = await getLibrary();
-  libraries.forEach((library) => console.log(library.branch))
+
+onBeforeMount(async () => {
+  await getLibraries()
 })
 
 /* import CoolData from '@/components/CoolData.vue';
@@ -117,4 +101,16 @@ export default {
 
 <style scoped>
 
+h1 {
+  text-align: center;
+}
+.flexbox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-items: center;
+  justify-content: center;
+  
+}
 </style>

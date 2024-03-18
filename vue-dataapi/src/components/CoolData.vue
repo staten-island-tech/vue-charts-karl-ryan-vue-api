@@ -1,18 +1,28 @@
-<script setup>
-
-const props = defineProps( {
-    library: Object,
-})
-
-
-</script>
-
 <template>
-<div class="cardSet">
-   <!-- <h2>{{ libraries.branch }}</h2> -->
+  <div class="cardSet" v-if="library">
+    <h2>{{ branch }} </h2>
+    <h3 v-if="boro">location: {{ boro }}</h3>
   </div>
 </template>
 
-<style lang="scss" scoped>
+<script setup>
+import { defineProps } from 'vue'
 
+const props = defineProps({
+  library: Object,
+  branch: String,
+  boro: String,
+})
+
+console.log(props.library)
+</script>
+
+<style scoped>
+.cardSet {
+  background-color: lightcoral;
+  border: 2px solid brown;
+  margin: 3%;
+  text-align: center;
+  width: 15%;
+}
 </style>
