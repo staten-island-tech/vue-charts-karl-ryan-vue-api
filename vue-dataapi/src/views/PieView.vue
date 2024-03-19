@@ -1,10 +1,13 @@
 <template>
+    <h1>pie test</h1>
     <div>
-        <h1>PIE</h1>
+  <canvas id="myChart"></canvas>
     </div>
 </template>
-
+  
 <script setup>
+import PieChart from '../components/PieGraph.vue'
+
 
 </script>
 
