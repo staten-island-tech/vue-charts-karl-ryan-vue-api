@@ -14,7 +14,7 @@ const props = defineProps({
   boro: String,
 })
 
-console.log(props.library)
+// console.log(props.library)
 </script>
 
 <style scoped>
