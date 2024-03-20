@@ -15,8 +15,7 @@
 
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-//import props from './components/CoolData.vue'
-import BarChart from './components/CoolData.vue'
+
 
 // export default {
 //   name: 'App',
