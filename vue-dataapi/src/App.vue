@@ -21,4 +21,5 @@ import { RouterLink, RouterView } from 'vue-router'
 //   name: 'App',
 //   components: { BarChart },
 // }
+
 </script>

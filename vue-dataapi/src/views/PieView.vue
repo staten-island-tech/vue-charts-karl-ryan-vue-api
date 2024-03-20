@@ -1,16 +1,17 @@
 <template>
-    <h1>pie test</h1>
-    <div>
-  <canvas id="myChart"></canvas>
-    </div>
-</template>
+    <h1>Pie Graph</h1>
+    <PieChart />
+  </template>
+    
+  <script>
+  import PieChart from '../components/PieGraph.vue'
   
-<script setup>
-import PieChart from '../components/PieGraph.vue'
-
-
-</script>
-
-<style scoped>
-
-</style>
+  export default {
+    name: 'Pie',
+    components: { PieChart }
+  }
+  </script>
+  
+  <style scoped>
+  
+  </style>
