@@ -1,4 +1,3 @@
-
 <!-- <template>
   <div class="container">
     <Bar v-if="loaded" :data="chartData" />
@@ -52,7 +51,6 @@ import CoolData from "../components/CoolData.vue"
 
 const libraries = ref([])
 
-
 async function getLibraries() {
   try {
     const response = await fetch('https://data.cityofnewyork.us/resource/ne9z-skhf.json')
@@ -65,10 +63,9 @@ async function getLibraries() {
   }
 }
 
-onBeforeMount(async () => {
+onBeforeMount(
   await getLibraries()
-})
-
+);
 
 /* import CoolData from '@/components/CoolData.vue';
 export default {
@@ -112,6 +109,5 @@ h1 {
   width: 100%;
   justify-items: center;
   justify-content: center;
-  
 }
 </style>

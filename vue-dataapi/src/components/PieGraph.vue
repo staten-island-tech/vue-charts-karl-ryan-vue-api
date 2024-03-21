@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
     <Pie id="my-chart-id" :options="chartOptions" :data="chartData" />
 </template>
   
@@ -11,7 +11,7 @@ import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, CategoryScale, Li
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale, LinearScale)
 
 export default {
-    name: 'PieChart',
+    name: 'PieGraph',
     components: { Pie },
     data() {
         return {
@@ -29,38 +29,65 @@ export default {
 </script>
 
 <style scoped>
-</style>
+</style> -->
 
-<!-- <template>
-    <div class="container">
-      <Bar v-if="loaded" :data="chartData" />
-    </div>
-  </template>
-  
-  <script>
-  import { Bar } from 'vue-chartjs'
-  import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, CategoryScale, LinearScale } from 'chart.js'
-  
-  ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale, LinearScale)
-  
-  export default {
-    name: 'BarChart',
-    components: { Bar },
-    data: () => ({
+<template>
+  <div class="container">
+    <Pie v-if="loaded" :data="chartData" />
+  </div>
+</template>
+
+<script>
+import { Pie } from 'vue-chartjs'
+import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, CategoryScale, LinearScale } from 'chart.js'
+
+ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale, LinearScale)
+
+export default {
+  name: 'PieGraph',
+  components: { Pie },
+
+  props: {
+    libraries: Array,
+  },
+
+  data() {
+    return {
       loaded: false,
       chartData: null
-    }),
-    async mounted () {
-      this.loaded = false
-  
-      try {
-        const { userlist } = await fetch('https://data.cityofnewyork.us/resource/ne9z-skhf.json')
-        this.chartdata = userlist
-  
-        this.loaded = true
-      } catch (e) {
-        console.error(e)
+    }
+  },
+  mounted() {
+    this.loaded = false
+
+    try {
+      const locations = this.libraries.map(library => library.boro_central_library)
+
+      const countLocations = locations.reduce((num, location) => { num[location] = (num[location] || 0) + 1;
+        return num;
+      },
+      [],
+      );
+
+      this.chartData = {
+        labels: Object.keys(countLocations),
+        datasets: [
+          {
+            labels: 'Library Locations',
+            backgroundColor: ['red', 'blue', 'green', 'purple', 'orange', 'black'],
+            data: Object.values(countLocations)
+          }
+        ]
       }
+
+      this.loaded = true
+    } 
+    catch (e) {
+      console.error(e);
     }
   }
-  </script> -->
+};
+</script>
+
+<style scoped>
+</style>
