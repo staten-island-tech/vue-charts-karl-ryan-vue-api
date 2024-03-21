@@ -63,9 +63,9 @@ async function getLibraries() {
   }
 }
 
-onBeforeMount(
+onBeforeMount(async () => {
   await getLibraries()
-);
+})
 
 /* import CoolData from '@/components/CoolData.vue';
 export default {
