@@ -1,4 +1,3 @@
-
 <!-- <template>
   <div class="container">
     <Bar v-if="loaded" :data="chartData" />
@@ -51,7 +50,6 @@ import { ref, onBeforeMount } from 'vue'
 import CoolData from "../components/CoolData.vue"
 
 const libraries = ref([])
-
 
 async function getLibraries() {
   try {
@@ -111,6 +109,5 @@ h1 {
   width: 100%;
   justify-items: center;
   justify-content: center;
-  
 }
 </style>
