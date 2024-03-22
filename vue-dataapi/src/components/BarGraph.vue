@@ -68,26 +68,58 @@ export default {
             // },
             //     [],
             // );
-            
-            console.log (programs)
 
-            this.chartData = {
-                labels: ['1-199', '200-399', '400-599', '600-799', '800-100000'],
-                datasets: [
-                    {
-                        labels: 'Library Programs',
-                        backgroundColor: ['red', 'blue', 'green', 'purple', 'orange'],
-                        data: programs,
+            function sortProgram(arr) {
+                const coolArr = []
+                    let oneArr = 0
+                    let twoArr = 0
+                    let threeArr = 0
+                    let fourArr = 0
+                    let fiveArr = 0
+                    arr.forEach((el) => {
+                    
+                    if (el < 200) {
+                        oneArr++
                     }
-                ]
-            }
+                    if (el >= 200 && el <400) {
+                        twoArr++
+                    }
+                    if (el >= 400 && el <600) {
+                        threeArr++
+                    }
+                    if (el >= 600 && el <800) {
+                        fourArr++
+                    }
+                    if (el >= 800) {
+                        fiveArr++
+                    }
+            })
+                    coolArr.push(oneArr)
+                    coolArr.push(twoArr)
+                    coolArr.push(threeArr)
+                    coolArr.push(fourArr)
+                    coolArr.push(fiveArr)
+                    return coolArr
+        }
 
-            this.loaded = true
+        this.chartData = {
+            data: ('yes'),
+            labels: ['1-199', '200-399', '400-599', '600-799', '800-100000'],
+            datasets: [
+                {
+                    label: 'I HATE LIFE',
+                    backgroundColor: ['red', 'blue', 'green', 'purple', 'orange'],
+                    data: sortProgram(programs),
+                }
+            ]
         }
-        catch (e) {
-            console.error(e);
-        }
+
+        this.loaded = true
     }
+        catch(e) {
+        console.error(e);
+    }
+}
 };
 </script>
   
