@@ -1,8 +1,12 @@
 <template>
   <div>
     <h1>Pie Graph</h1>
+  <select v-model="selectedOption">
+    <option value="current">Current Data</option>
+    <option value="weeklyHours">Weekly Hours of Public Service</option>
+  </select>
     <template v-if="libraries.length > 0">
-      <PieGraph :libraries="libraries" />
+      <PieGraph :libraries="libraries" :selectedOption="selectedOption"/>
     </template> 
   </div>
 </template>
@@ -12,6 +16,7 @@ import { ref, onBeforeMount } from 'vue';
 import PieGraph from '../components/PieGraph.vue';
 
 const libraries = ref([]);
+const selectedOptions = ref('current');
 
 async function getLibraries() {
   try {

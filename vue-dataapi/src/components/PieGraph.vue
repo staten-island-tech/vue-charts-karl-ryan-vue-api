@@ -49,6 +49,7 @@ export default {
 
   props: {
     libraries: Array,
+    selectedOption: String,
   },
 
   data() {
@@ -57,34 +58,76 @@ export default {
       chartData: null
     }
   },
-  mounted() {
-    this.loaded = false
+
+  watch: {
+    selectedOption: {
+      immediate: true,
+      handler() {
+        this.updateChartData();
+      }
+    }
+  },
+
+  methods: {
+    async updateChartData() {
+      this.loaded = false;
 
     try {
+      if (this.selectedOption === 'current') {
       const locations = this.libraries.map(library => library.boro_central_library)
 
       const countLocations = locations.reduce((num, location) => { num[location] = (num[location] || 0) + 1;
         return num;
-      },
-      [],
-      );
+      }, {});
 
       this.chartData = {
         labels: Object.keys(countLocations),
         datasets: [
           {
-            labels: 'Library Locations',
+            label: 'Library Locations',
             backgroundColor: ['red', 'blue', 'green', 'purple', 'orange', 'black'],
             data: Object.values(countLocations)
           }
         ]
+      };
+    } else if (this.selectedOption === 'weeklyHours') {
+          const weeklyHoursData = {};
+
+
+        for (const library of this.libraries) {
+          const label = library.boro_central_library;
+          const weeklyHours = parseInt(library.weekly_hours_of_public_service);
+
+          if (!isNaN(weeklyHours)) {
+            if (weeklyHoursData[label]) {
+              weeklyHoursData[label] += weeklyHours;
+          } else {
+            weeklyHoursData[label] = weeklyHours;
+          }
+        }
       }
 
-      this.loaded = true
-    } 
-    catch (e) {
-      console.error(e);
+      this.chartData = {
+        labels: Object.keys(weeklyHoursData),
+        datasets: [
+          {
+            label: 'Weekly Hours of Public Service',
+            backgroundColor: ['red', 'blue', 'green', 'purple', 'orange', 'black'],
+                data: Object.values(weeklyHoursData)
+              }
+            ]
+          };
     }
+
+      this.loaded = true;
+    } catch (e) {
+      console.error(e);
+      }
+    }
+  },
+
+  mounted() {
+    this.updateChartData();
   }
 };
 </script>
