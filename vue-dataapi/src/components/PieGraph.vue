@@ -73,12 +73,14 @@ export default {
       this.loaded = false;
 
     try {
-      if (this.selectedOption === 'current') {
-      const locations = this.libraries.map(library => library.boro_central_library)
 
+      if (this.selectedOption === 'location') {
+      const locations = this.libraries.map(library => library.boro_central_library);
       const countLocations = locations.reduce((num, location) => { num[location] = (num[location] || 0) + 1;
         return num;
-      }, {});
+      }, 
+      []
+      );
 
       this.chartData = {
         labels: Object.keys(countLocations),
@@ -90,23 +92,20 @@ export default {
           }
         ]
       };
-    } else if (this.selectedOption === 'weeklyHours') {
-          const weeklyHoursData = {};
 
+    } else if (this.selectedOption === 'weeklyHours') {
+          const weeklyHoursData = [];
 
         for (const library of this.libraries) {
           const label = library.boro_central_library;
           const weeklyHours = parseInt(library.weekly_hours_of_public_service);
 
-          if (!isNaN(weeklyHours)) {
-            if (weeklyHoursData[label]) {
+          if (weeklyHoursData[label]) {
               weeklyHoursData[label] += weeklyHours;
           } else {
             weeklyHoursData[label] = weeklyHours;
           }
-        }
       }
-
       this.chartData = {
         labels: Object.keys(weeklyHoursData),
         datasets: [
@@ -129,6 +128,7 @@ export default {
   mounted() {
     this.updateChartData();
   }
+
 };
 </script>
 
