@@ -1,35 +1,3 @@
-<!-- <template>
-    <Bar :data="chartData" />
-</template>
-  
-<script>
-import { Bar } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
-
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
-
-export default {
-    name: 'BarChart',
-    components: { Bar },
-    data() {
-        return {
-            chartData: {
-                labels: ['1-200', '201-400', '401-600', '601-800', '801+'],
-                datasets: [
-                    {
-                        label: 'Total Programs',
-                        backgroundColor: '#f87979',
-                        data: [200]
-                    }
-                    
-                ]
-            }
-        }
-    }
-}
-</script>
-   -->
-
 <template>
     <div class="container">
         <Bar v-if="loaded" :data="chartData" />
@@ -61,56 +29,51 @@ export default {
 
         try {
             const programs = this.libraries.map(library => library._total_program)
+            
+        function sortProgram(arr, index) {
+            const coolArr = [0, 0, 0, 0, 0]
 
-            // const numEachProgram = programs.reduce((num, programs) => {
-            //     num[programs] = (num[programs] || 0) + 1;
-            //     return num;
-            // },
-            //     [],
-            // );
-
-            function sortProgram(arr) {
-                const coolArr = []
-                    let oneArr = 0
-                    let twoArr = 0
-                    let threeArr = 0
-                    let fourArr = 0
-                    let fiveArr = 0
-                    arr.forEach((el) => {
-                    
-                    if (el < 200) {
-                        oneArr++
-                    }
-                    if (el >= 200 && el <400) {
-                        twoArr++
-                    }
-                    if (el >= 400 && el <600) {
-                        threeArr++
-                    }
-                    if (el >= 600 && el <800) {
-                        fourArr++
-                    }
-                    if (el >= 800) {
-                        fiveArr++
-                    }
-            })
-                    coolArr.push(oneArr)
-                    coolArr.push(twoArr)
-                    coolArr.push(threeArr)
-                    coolArr.push(fourArr)
-                    coolArr.push(fiveArr)
-                    return coolArr
+            arr.forEach(el => {
+                if (el < 200) coolArr[0]++
+                else if (el < 400) coolArr[1]++
+                else if (el < 600) coolArr[2]++
+                else if (el < 800) coolArr[3]++
+                else coolArr[4]++
+        })
+            return coolArr[index]
         }
+
+        
 
         this.chartData = {
             data: ('yes'),
             labels: ['1-199', '200-399', '400-599', '600-799', '800-100000'],
             datasets: [
                 {
-                    label: 'I HATE LIFE',
-                    backgroundColor: ['red', 'blue', 'green', 'purple', 'orange'],
-                    data: sortProgram(programs),
-                }
+                    label: '0-199',
+                    backgroundColor: ['red'],
+                    data: [sortProgram(programs, 0)],
+                },
+                {
+                    label: '200-399',
+                    backgroundColor: ['blue'],
+                    data: [sortProgram(programs, 1)],
+                },
+                {
+                    label: '400-599',
+                    backgroundColor: ['green'],
+                    data: [sortProgram(programs, 2)],
+                },
+                {
+                    label: '600-799',
+                    backgroundColor: ['purple'],
+                    data: [sortProgram(programs, 3)],
+                },
+                {
+                    label: '800+',
+                    backgroundColor: ['orange'],
+                    data: [sortProgram(programs, 4)],
+                },
             ]
         }
 
