@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Bar Graph</h1>
+    <h3>Number of Programs in Library</h3>
     <template v-if="libraries.length > 0">
       <BarGraph :libraries="libraries" />
     </template> 

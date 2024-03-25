@@ -46,7 +46,6 @@ export default {
         
 
         this.chartData = {
-            data: ('yes'),
             labels: ['Number Of Programs in Library'],
             datasets: [
                 {
