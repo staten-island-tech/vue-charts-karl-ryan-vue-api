@@ -33,7 +33,7 @@ export default {
 
 <template>
   <div class="container">
-    <Pie v-if="loaded" :data="chartData" />
+    <Pie class="pie" v-if="loaded" :data="chartData" />
   </div>
 </template>
 
