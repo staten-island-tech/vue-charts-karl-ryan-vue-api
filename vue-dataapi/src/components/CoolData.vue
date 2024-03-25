@@ -18,10 +18,11 @@ console.log(props.library)
 
 <style scoped>
 .cardSet {
-  background-color: lightcoral;
+  background-color: rgba(0, 0, 0, 0.596);
   border: 2px solid brown;
   margin: 3%;
   text-align: center;
   width: 15%;
+  color: white
 }
 </style>
