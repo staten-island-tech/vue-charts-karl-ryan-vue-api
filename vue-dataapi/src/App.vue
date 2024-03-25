@@ -3,8 +3,8 @@
 
       <nav class="ribbon">
         <RouterLink id="navStuff" to="/">Home</RouterLink> 
-        <RouterLink id="navStuff" to="/pie">Pie</RouterLink>
-        <RouterLink id="navStuff" to="/bar">Bar</RouterLink>
+        <RouterLink id="navStuff" to="/pie">Locations and Hours of Service</RouterLink>
+        <RouterLink id="navStuff" to="/bar">Number of Programs</RouterLink>
       </nav>
 
   </header>

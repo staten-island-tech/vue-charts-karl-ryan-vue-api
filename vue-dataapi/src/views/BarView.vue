@@ -1,10 +1,11 @@
 <template>
   <div>
-    <h1>Bar Graph</h1>
-    <h2>Number of Programs in Library</h2>
+    <h1 class = "normal">Bar Graph</h1>
+    <h2 class = "normal">Number of Programs in Library</h2>
+    <div class = "bar">
     <template v-if="libraries.length > 0">
       <BarGraph :libraries="libraries" />
-    </template> 
+    </template> </div>
   </div>
 </template>
 
@@ -28,3 +29,16 @@ async function getLibraries() {
 
 onBeforeMount(getLibraries);
 </script>
+
+<style scoped>
+.normal{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.575);
+}
+
+.bar{
+  background-color: rgba(255, 255, 255, 0.774);
+}
+</style>
