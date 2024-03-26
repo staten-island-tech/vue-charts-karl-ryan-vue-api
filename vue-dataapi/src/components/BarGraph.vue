@@ -7,13 +7,11 @@
 <script>
 import { Bar } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
-
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 export default {
     name: 'BarGraph',
     components: { Bar },
-
     props: {
         libraries: Array,
     },
@@ -42,8 +40,6 @@ export default {
         })
             return coolArr[index]
         }
-
-        
 
         this.chartData = {
             labels: ['Number Of Programs in Library'],
@@ -75,7 +71,6 @@ export default {
                 },
             ]
         }
-
         this.loaded = true
     }
         catch(e) {

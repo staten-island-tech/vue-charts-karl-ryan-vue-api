@@ -40,13 +40,11 @@ export default {
 <script>
 import { Pie } from 'vue-chartjs'
 import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, CategoryScale, LinearScale } from 'chart.js'
-
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale, LinearScale)
 
 export default {
   name: 'PieGraph',
   components: { Pie },
-
   props: {
     libraries: Array,
     selectedOption: String,
@@ -73,7 +71,6 @@ export default {
       this.loaded = false;
 
     try {
-
       if (this.selectedOption === 'location') {
       const locations = this.libraries.map(library => library.boro_central_library);
       const countLocations = locations.reduce((num, location) => { num[location] = (num[location] || 0) + 1;
@@ -81,7 +78,6 @@ export default {
       }, 
       []
       );
-
       this.chartData = {
         labels: Object.keys(countLocations),
         datasets: [
@@ -124,16 +120,13 @@ export default {
       }
     }
   },
-
   mounted() {
     this.updateChartData();
   }
-
 };
 </script>
 
 <style scoped>
-
 .container {
   width: 80vw;
   height: 80vh;
