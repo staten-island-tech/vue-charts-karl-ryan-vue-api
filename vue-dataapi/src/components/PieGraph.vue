@@ -88,7 +88,7 @@ export default {
           {
             label: 'Library Locations',
             backgroundColor: ['red', 'blue', 'green', 'purple', 'orange', 'black'],
-            data: Object.values(countLocations)
+            data: Object.values(countLocations),
           }
         ]
       };
@@ -133,4 +133,17 @@ export default {
 </script>
 
 <style scoped>
+
+.container {
+  width: 80vw;
+  height: 80vh;
+  background-color: rgba(255, 255, 255, 0.774);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+}
 </style>
